@@ -29,7 +29,7 @@ def from_irradiance(index: pd.DatetimeIndex, poa: pd.Series, temp: pd.Series, si
 
 def _solar_geometry(times_utc: pd.DatetimeIndex, site: Site):
     rad = np.pi / 180
-    doy = times_utc.dayofyear.values
+    doy = times_utc.day_of_year.values
     hours_utc = times_utc.hour.values + times_utc.minute.values / 60 + times_utc.second.values / 3600
     decl = 23.45 * np.sin(rad * 360 / 365 * (284 + doy)) * rad
     B = rad * 360 / 365 * (doy - 81)
